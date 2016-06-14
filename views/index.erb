@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/home.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <meta charset="utf-8">
+  <title><%= @title %></title>
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1><%= @title %><br><small>The Greatest Game You've Never Seen</small></h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="game_title text-center"><%= @app.name %></h1>
+
+    <h1 class="rating text-center">
+      &#x1f44d; <%= @app.all_review %>% &#x1f44e; <%= 100 - @app.all_review %>%
+    </h1>
+
+    <a href="http://store.steampowered.com/app/<%= @app.appid %>/" target="_blank">
+      <img class="rotation img-responsive" src="http://cdn.akamai.steamstatic.com/steam/apps/<%=@app.appid %>/header.jpg" alt="<%= @app.name %>">
+    </a>
+
+    <br>
+
+    <div class="text-center">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-size="large" data-text="<%= @app.name %> (&#x1f44d; <%= @app.all_review %>% &#x1f44e; <%= 100 - @app.all_review %>%) http://store.steampowered.com/app/<%= @app.appid %> #神ゲーおみくじ">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+  </div>
+</body>
+</html>

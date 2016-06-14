@@ -1,0 +1,19 @@
+.rotation {
+  animation: roll 10s linear infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: perspective(700px) rotateX(0deg);
+  }
+  50%{
+    transform: perspective(700px) rotateX(180deg);
+  }
+  to{
+    transform: perspective(700px) rotateX(360deg);
+  }
+}
+
+.img-responsive {
+  margin: 0 auto;
+}
