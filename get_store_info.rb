@@ -1,3 +1,4 @@
+# Steamストアから色々取得してデータベースに保存するやつ
 require 'net/http'
 require 'uri'
 require 'yaml'
