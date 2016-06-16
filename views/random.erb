@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="<%= url('css/bootstrap.min.css') %>" />
+  <link rel="stylesheet" href="<%= url('/css/home.css') %>" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="jumbotron">
+    <h1 class="text-center">所持ゲームからランダムに表示するやつ<br>
+    <small>DO NOT Bury Your Head in the Sand. Face Reality.</small>
+  </h1>
+  </div>
+  <div class="container text-center">
+    <form action="random" method="POST">
+      <div class="h3">SteamプロフィールのURL : <input type="text" name="profile_url">
+      <input class="btn btn-primary" type="submit" value="送信">
+      </div>
+    </form>
+
+    <% if !@msg.nil? %>
+      <div class="alert alert-danger fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= @msg %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if !@app.nil? %>
+    <div class="container text-center">
+      <h1 class="game_title text-center"><%= @app.name %></h1>
+
+      <a href="http://store.steampowered.com/app/<%= @app.appid %>/" target="_blank">
+        <img class="rotation img-responsive" src="http://cdn.akamai.steamstatic.com/steam/apps/<%= @app.appid %>/header.jpg" alt="<%= @app.name %>">
+      </a> 
+    </div>
+  <% end %>
+    
+</body>
+</html>

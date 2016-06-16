@@ -25,13 +25,20 @@ class App < ActiveRecord::Base
 
 end
 
+# Webコンテンツをダウンロード
+def fetch(uri_str)
+  uri = URI.parse(uri_str)
+  response = Net::HTTP.get_response(uri)
+  return response.body
+end
+
 # アプリ一覧を更新する
 def update_applist
 
   applist_uri = 'http://api.steampowered.com/ISteamApps/GetAppList/v0001/'
 
   # アプリ一覧を取得して整形
-  applist = JSON.load( open( applist_uri ) )
+  applist = JSON.load(fetch(applist_uri))
   apps = applist['applist']['apps']['app']
 
   # 全アプリのappid,nameをデータベースへ 
@@ -47,14 +54,6 @@ def update_applist
   end  
 
 end
-
-# Webコンテンツをダウンロード
-def fetch(uri_str)
-  uri = URI.parse(uri_str)
-  response = Net::HTTP.get_response(uri)
-  return response.body
-end
-
 
 # appdetailsを取得する
 def get_appdetails(appid)
@@ -104,6 +103,7 @@ def get_review_rate(storepage)
 
   review_rate_class = 'span.nonresponsive_hidden.responsive_reviewdesc'
   review_rates = storepage.css(review_rate_class).inner_text.scan(/\d{,3}%/)
+
 end
 
 # ストアページからレビュー数を取得
@@ -131,11 +131,13 @@ def get_tags(storepage)
   end
 
   tag = storepage.css('.app_tag').inner_text.scan(/[\w\ \-]+/)
+
 end
 
-app = App.find(384421)
+app = App.first
 
 handler do |job|
+
   case job
   when 'update_applist.job'
     update_applist
