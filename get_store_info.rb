@@ -139,12 +139,11 @@ app = App.first
 handler do |job|
 
   case job
-  when 'update_applist.job'
-    update_applist
   when 'get_storeinfo.job'
 
     if app == nil 
       app = App.first
+      update_applist
     end   
 
     appdetails = get_appdetails(app.appid)
@@ -170,5 +169,4 @@ handler do |job|
   end
 end
 
-every(1.day, 'update_applsit.job', :at => '00:00')
 every(2.seconds, 'get_storeinfo.job')

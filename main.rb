@@ -14,8 +14,6 @@ class MainApp < Sinatra::Base
     self.inheritance_column = :_type_disabled
   end
 
-  set :environment, :production
-
 
   get '/steam/' do
     redirect '/steam/kuso'

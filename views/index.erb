@@ -27,6 +27,10 @@
     <br>
 
     <div class="text-center">
+      <button type="button" class="btn btn-lg" onclick="location.reload();">更新</button>
+    </div>
+
+    <div class="text-center wrap">
       <a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-size="large" data-text="<%= @app.name %> (&#x1f44d; <%= @app.all_review %>% &#x1f44e; <%= 100 - @app.all_review %>%) http://store.steampowered.com/app/<%= @app.appid %> #<%= @title %>">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
   </div>
