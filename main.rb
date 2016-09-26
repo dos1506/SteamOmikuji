@@ -50,7 +50,7 @@ class MainApp < Sinatra::Base
     profile_url = params[:profile_url]
 
     # http://steamcommunity.com/id/hogehoge
-    # http://steamcommunity.com/id/hogehoge/
+    # http://steamcommunity.com/profiles/hogehoge
     # という形の文字列だけ通す
     if profile_url =~ /^http:\/\/steamcommunity\.com\/id\/\w+\/*?/ ||
        profile_url =~ /^http:\/\/steamcommunity\.com\/profiles\/\d+\/*?/
